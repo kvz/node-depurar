@@ -1,1 +1,5 @@
-console.log "Hey"
+class Depurar
+  constructor: ->
+
+
+module.exports = Depurar

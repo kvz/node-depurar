@@ -35,3 +35,15 @@ release-patch: build test
 	@npm version patch -m "Release %s"
 	@git push
 	@npm publish
+
+.PHONY: upgrade-npm-dependencies
+upgrade-npm-dependencies:
+	coffee scripts/upgrade-modules.coffee
+
+	@cd api2 && \
+	  npm install && \
+	  ./node_modules/.bin/npm-check-updates --upgrade && \
+	  npm install
+	#$(MAKE) test
+	#git add ./package.json
+	#git commit -m'Upgrade NPM dependencies'
