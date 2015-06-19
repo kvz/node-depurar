@@ -27,4 +27,8 @@ build/Release
 node_modules
 
 
-lib
+lib/
+
+lib/Depurar.js
+
+lib/Depurar.js.map

@@ -16,7 +16,7 @@ build:
 
 .PHONY: test
 test: build
-	@DEBUG=Depurar:* $(MOCHA) --reporter $(REPORTER) test/ --grep "$(GREP)"
+	@DEBUG=*:*,-mocha:* $(MOCHA) --reporter $(REPORTER) test/ --grep "$(GREP)"
 
 .PHONY: release-major
 release-major: build test
