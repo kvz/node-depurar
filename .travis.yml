@@ -11,12 +11,3 @@ matrix:
   - node_js: "iojs-v2.0.0"
 
 script: make test REPORTER=spec
-
-# travis encrypt [subdomain]:[api token]@[room id]
-notifications:
-  email: false
-  campfire:
-    rooms:
-      secure: "gzR8v5p73bVqFGGiEfv2yLctwzREwea94xSy8TdyiBb6UybipH+Qs4OgDYNNf30y1Wcc4s+vBVBqwSsk4xQn/Bw0YdNSLdUeSOTVMhcn1HftCbXgw/6GMDnm1EPiVaMMD9e52z3HpCP5MGCGoOEMwOjuDv7TsMiBKCM2gr4vYoQ="
-    on_failure: always
-    on_success: always
