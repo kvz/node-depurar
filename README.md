@@ -59,6 +59,7 @@ Debug by default picks the next color from a list, every time it gets instantiat
 
 The the thing about this is that particular classes will always talk to you in the same color, making it easy for your brain to digest. "Ah pink, that's `Bar` alright. "
 
+![](https://dl.dropboxusercontent.com/s/45um101fayesfl3/2015-06-20%20at%2013.41.png?dl=0)
 
 ## Sponsor Development
 
