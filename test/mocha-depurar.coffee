@@ -55,9 +55,9 @@ describe "Depurar", ->
       depurar.useColors = true
       depurar "ohai"
 
-      expect(captured[0]).to.match /95mFoo/
-      expect(captured[1]).to.match /95mWhat/
-      expect(captured[2]).to.match /93mFoo/
+      expect(captured[0]).to.match /35;1mFoo/
+      expect(captured[1]).to.match /35;1mWhat/
+      expect(captured[2]).to.match /33;1mFoo/
       done()
 
   describe "_getCallerPathFromTrace", ->
