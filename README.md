@@ -25,7 +25,7 @@ npm install --save depurar
 
 ### Automatically establishes namespace 
 
-`debug` has the convention of prefixing debug output with a namespace in the form of: `Library:feature`. This allows us to quickly enable/disable debug output for some libraries or features. In my interpretation of this convention this often leads to `Modulename:Classname`.
+`debug` has the convention of prefixing debug output with a namespace in the form of: `Library:feature`. This allows us to quickly enable/disable debug output for some libraries or features. In my interpretation of this convention this often leads to `ModuleName:ClassName`.
 
 So I got a bit tired of opening `~/code/foo/lib/Bar.coffee` and typing:
 
@@ -36,8 +36,7 @@ class Bar
     debug "ohai"
 ```
 
-with depurar, the project/module/package name will be [guessed](https://www.npmjs.com/package/app-root-path), 
-as well as the feature/file/class name:
+with depurar, the first part of this namespace will be [guessed](https://www.npmjs.com/package/app-root-path) based on the directory name of your library/app, and the second part will be based on the basename of the file where you require it:
 
 ```coffeescript
 debug = require("depurar")()
@@ -45,13 +44,13 @@ debug = require("depurar")()
 
 Saving you some precious keystrokes : )
 
-If you don't like the automatic guessing of the package name, you can also just litter your project with:
+If you don't like the automatic guessing of the library name, you can also just litter your project with:
 
 ```coffeescript
 debug = require("depurar")("foo")
 ```
 
-causing only the second `Bar` part to be guessed based on the basename of the file where you include it.
+causing only the second `Bar` part to be automatically established.
 
 ### Picks color based on namespace, not rotation
 
