@@ -2,6 +2,7 @@ should = require("chai").should()
 expect = require("chai").expect
 path   = require "path"
 util   = require "util"
+fs     = require "fs"
 debug  = require("debug")("Depurar:" + path.basename(__filename, path.extname(__filename)))
 
 captured = []
@@ -19,7 +20,7 @@ describe "Depurar", ->
   @timeout 10000 # <-- This is the Mocha timeout, allowing tests to run longer
 
   describe "constructor", ->
-    it "Should respect configured namespace Foo:Bar", (done) ->
+    it "should respect configured namespace Foo:Bar", (done) ->
       captured    = []
       depurar     = require("../src/Depurar")("Foo:Bar")
       depurar.log = capture
@@ -27,7 +28,7 @@ describe "Depurar", ->
       expect(captured[0]).to.match /mFoo:Bar /
       done()
 
-    it "Should figure out namespace if unconfigured", (done) ->
+    it "should figure out namespace if unconfigured", (done) ->
       captured    = []
       depurar     = require("../src/Depurar")()
       depurar.log = capture
@@ -36,7 +37,7 @@ describe "Depurar", ->
       expect(captured[0]).to.match /mnode\-depurar:mocha\-depurar /
       done()
 
-    it "Should make color dependent on second part of namespace", (done) ->
+    it "should make color dependent on second part of namespace", (done) ->
       captured    = []
 
       depurar     = require("../src/Depurar")("Foo:Bar")
@@ -47,11 +48,31 @@ describe "Depurar", ->
       depurar.log = capture
       depurar "ohai"
 
-      depurar     = require("../src/Depurar")("Foo:What")
+      depurar     = require("../src/Depurar")("Foo:BarBar")
       depurar.log = capture
       depurar "ohai"
 
       expect(captured[0]).to.match /95mFoo/
-      expect(captured[1]).to.match /95mFoo/
-      expect(captured[2]).to.match /95mFoo/
+      expect(captured[1]).to.match /95mWhat/
+      expect(captured[2]).to.match /93mFoo/
+      done()
+
+  describe "_getCallerPathFromTrace", ->
+    it "should parse filename", (done) ->
+      stackError = new Error
+      Depurar    = require("../src/Depurar")
+      filepath   = Depurar._getCallerPathFromTrace stackError
+      exists     = fs.existsSync filepath
+      expect(exists).to.equal true
+      done()
+
+  describe "_getColorFromNamespace", ->
+    it "should get color index", (done) ->
+      Depurar = require("../src/Depurar")
+      color   = Depurar._getColorFromNamespace "Foo:Bar", [6, 5]
+      expect(color).to.equal 6
+      color   = Depurar._getColorFromNamespace "Foo:Bar", [6, 5, 4, 3]
+      expect(color).to.equal 4
+      color   = Depurar._getColorFromNamespace "Foo", [6, 5]
+      expect(color).to.equal 5
       done()

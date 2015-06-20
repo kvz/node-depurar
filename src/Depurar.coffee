@@ -3,6 +3,7 @@ util    = require "util"
 CRC32   = require "crc-32"
 debug   = require("debug")("Depurar:" + path.basename(__filename, path.extname(__filename)))
 appRoot = require "app-root-path"
+Debug   = require("debug")
 
 class Depurar
   constructor: (namespace) ->
@@ -17,16 +18,19 @@ class Depurar
       else
         namespace = "#{parentDir}:#{basename}"
 
-
-    colors = [6, 2, 3, 4, 5, 1]
-    secondPart = namespace.split(":")[1]
-    crc        = CRC32.str secondPart
-
-    dbg       = require("debug")(namespace)
-    dbg.color = colors[crc % colors.length]
+    color     = Depurar._getColorFromNamespace namespace
+    dbg       = Debug namespace
+    dbg.color = color
 
     return dbg
 
+  @_getColorFromNamespace: (namespace, colors) ->
+    colors             ?= [6, 2, 3, 4, 5, 1]
+    [first, ..., last]  = namespace.split ":"
+    absCrc              = Math.abs CRC32.str(last)
+    colorIndex          = absCrc % colors.length
+    color               = colors[colorIndex]
+    return color
 
   @_getCallerPathFromTrace: (stackError) ->
     caller   = stackError.stack.split('\n')[2].trim()
