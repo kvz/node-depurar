@@ -1,9 +1,9 @@
 path    = require "path"
 util    = require "util"
 CRC32   = require "crc-32"
-debug   = require("debug")("Depurar:" + path.basename(__filename, path.extname(__filename)))
-appRoot = require "app-root-path"
 Debug   = require("debug")
+debug   = Debug "Depurar:" + path.basename(__filename, path.extname(__filename))
+appRoot = require "app-root-path"
 
 class Depurar
   constructor: (namespace) ->
