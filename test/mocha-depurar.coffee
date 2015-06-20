@@ -40,16 +40,19 @@ describe "Depurar", ->
     it "should make color dependent on second part of namespace", (done) ->
       captured    = []
 
-      depurar     = require("../src/Depurar")("Foo:Bar")
-      depurar.log = capture
+      depurar           = require("../src/Depurar")("Foo:Bar")
+      depurar.log       = capture
+      depurar.useColors = true
       depurar "ohai"
 
-      depurar     = require("../src/Depurar")("What:Bar")
-      depurar.log = capture
+      depurar           = require("../src/Depurar")("What:Bar")
+      depurar.log       = capture
+      depurar.useColors = true
       depurar "ohai"
 
-      depurar     = require("../src/Depurar")("Foo:BarBar")
-      depurar.log = capture
+      depurar           = require("../src/Depurar")("Foo:BarBar")
+      depurar.log       = capture
+      depurar.useColors = true
       depurar "ohai"
 
       expect(captured[0]).to.match /95mFoo/
