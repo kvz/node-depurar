@@ -1,7 +1,7 @@
 # depurar
 
 <!-- badges/ -->
-[![Build Status](https://secure.travis-ci.org/kvz/depurar.png?branch=master)](http://travis-ci.org/kvz/depurar "Check this project's build status on TravisCI")
+[![Build Status](https://travis-ci.org/kvz/node-depurar.svg?branch=master)](https://travis-ci.org/kvz/node-depurar)
 [![NPM version](http://badge.fury.io/js/depurar.png)](https://npmjs.org/package/depurar "View this project on NPM")
 [![Dependency Status](https://david-dm.org/kvz/depurar.png?theme=shields.io)](https://david-dm.org/kvz/depurar)
 [![Development Dependency Status](https://david-dm.org/kvz/depurar/dev-status.png?theme=shields.io)](https://david-dm.org/kvz/depurar#info=devDependencies)
