@@ -8,7 +8,7 @@
 <!-- /badges -->
 
 
-> **depurar** (first-person singular present indicative depuro, past participle depurado)
+> **depurar** (first-person singular present indicative depuro, past participle depurado)  
 > 1. to purify, cleanse  
 > 2 (computing) To debug  
 
@@ -59,6 +59,13 @@ Debug by default picks the next color from a list, every time it gets instantiat
 The the thing about this is that particular classes will always talk to you in the same color, making it easy for your brain to digest. "Ah pink, that's `Bar` alright. "
 
 ![](https://dl.dropboxusercontent.com/s/45um101fayesfl3/2015-06-20%20at%2013.41.png?dl=0)
+
+## Todo
+
+- [ ] Support for enabling adding the linenumber to the debug prefix
+- [ ] Support for disabling colorpicking by namespace
+- [ ] Handle & test the case where `undefined` is debugged
+
 
 ## Sponsor Development
 
