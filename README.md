@@ -58,6 +58,15 @@ That's the reasoning. And that's why Depurar reduces namespaces to a color index
 
 ![](https://dl.dropboxusercontent.com/s/45um101fayesfl3/2015-06-20%20at%2013.41.png?dl=0)
 
+
+## FAQ
+
+### Is Depurar more efficient than debug?
+
+While I'm too lazy to benchmark, considering there's extra pathfinding and computation involved, I'd say: No.
+If your app's bottleneck is in requiring files, Depurar is not for you. That said, if the bottleneck in your
+app becomes Depurar, I'd either be very impressed or underwhelmed by your app.
+
 ## Todo
 
 - [ ] Support for enabling adding the linenumber to the debug prefix
