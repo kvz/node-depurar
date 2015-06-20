@@ -12,7 +12,7 @@
 > 1. to purify, cleanse  
 > 2 (computing) To debug  
 
-depurar is a wrapper around [`debug`](https://www.npmjs.com/package/debug) adding a couple
+Depurar is a wrapper around [`debug`](https://www.npmjs.com/package/debug) adding a couple
 of features for the truly lazy.
 
 ## Install
@@ -23,7 +23,7 @@ npm install --save depurar
 
 ## Added features
 
-### Automatically establishes namespace 
+### Automatically establish namespace 
 
 `debug` has the convention of prefixing debug output with a namespace in the form of: `Library:feature`. This allows us to quickly enable/disable debug output for some libraries or features. In my interpretation of this convention this often leads to `ModuleName:ClassName`.
 
@@ -36,27 +36,25 @@ class Bar
     debug "ohai"
 ```
 
-with depurar, the first part of this namespace will be [guessed](https://www.npmjs.com/package/app-root-path) based on the directory name of your library/app, and the second part will be based on the basename of the file where you require it:
-
-```coffeescript
-debug = require("depurar")()
-```
-
-Saving you some precious keystrokes : )
-
-If you don't like the automatic guessing of the library name, you can also just litter your project with:
+With Depurar, the second part will be based on the basename of the file where you require it:
 
 ```coffeescript
 debug = require("depurar")("foo")
+# Sets the namespace to `foo:Bar` in the case of `~/code/foo/lib/Bar.coffee`
 ```
 
-causing only the second `Bar` part to be automatically established.
+What's more, if you are really truly lazy, the first part of this namespace can even be [guessed](https://www.npmjs.com/package/app-root-path) based on the directory name of your library/app, and 
 
-### Picks color based on namespace, not rotation
+```coffeescript
+debug = require("depurar")()
+# Sets the namespace to `foo:Bar` in the case of `~/code/foo/lib/Bar.coffee`
+```
 
-Debug by default picks the next color from a list, every time it gets instantiated. While there are certainly advantages to that, that depurar is killing, depurar bases the color picked on the namespace.
+### Pick color based on namespace, not rotation
 
-The the thing about this is that particular classes will always talk to you in the same color, making it easy for your brain to digest. "Ah pink, that's `Bar` alright. "
+`debug` by default picks the next color from a list, every time it gets instantiated. That's nice so you get a new color for every entity that's talking to you. However in async land this also often means that with every run or change, every entity has a new color again. First world's problems but the brain is great at recognizing patterns via color and so if every entity had it's own color, debug information would be easier to digest.
+
+That's the reasoning. And that's why Depurar reduces namespaces to a color index via crc. This does not warrant unique colors across the board, but it does make every class or feature, always speak in the same color.
 
 ![](https://dl.dropboxusercontent.com/s/45um101fayesfl3/2015-06-20%20at%2013.41.png?dl=0)
 
