@@ -23,38 +23,39 @@ describe "Depurar", ->
   describe "constructor", ->
     it "should respect configured namespace Foo:Bar", (done) ->
       captured    = ""
-      depurar     = Depurar("Foo:Bar")
+      depurar     = Depurar "Foo:Bar"
       depurar.log = capture
       depurar "ohai"
       expect(captured).to.match /mFoo:Bar /
       done()
 
-    it "should figure out namespace if unconfigured", (done) ->
+    it "should figure out namespace via stackstrace if left unconfigured", (done) ->
       captured    = ""
       depurar     = Depurar()
       depurar.log = capture
+      depurar.useColors = false
       depurar "ohai"
 
-      expect(captured).to.match /mnode\-depurar:mocha\-depurar /
+      expect(captured).to.match /node\-depurar:mocha\-depurar ohai$/
       done()
 
     it "should make color dependent on second part of namespace", (done) ->
       captured          = ""
-      depurar           = Depurar("Foo:Bar")
+      depurar           = Depurar "Foo:Bar"
       depurar.log       = capture
       depurar.useColors = true
       depurar "ohai"
       expect(captured).to.match /35;1mFoo/
 
       captured          = ""
-      depurar           = Depurar("What:Bar")
+      depurar           = Depurar "What:Bar"
       depurar.log       = capture
       depurar.useColors = true
       depurar "ohai"
       expect(captured).to.match /35;1mWhat/
 
       captured          = ""
-      depurar           = Depurar("Foo:BarBar")
+      depurar           = Depurar "Foo:BarBar"
       depurar.log       = capture
       depurar.useColors = true
       depurar "ohai"
@@ -71,11 +72,26 @@ describe "Depurar", ->
       done()
 
   describe "_getColorFromNamespace", ->
-    it "should get color index", (done) ->
+    it "should establish color index by name vs prevColor increment", (done) ->
       color   = Depurar._getColorFromNamespace "Foo:Bar", [6, 5]
       expect(color).to.equal 6
       color   = Depurar._getColorFromNamespace "Foo:Bar", [6, 5, 4, 3]
       expect(color).to.equal 4
       color   = Depurar._getColorFromNamespace "Foo", [6, 5]
       expect(color).to.equal 5
+      done()
+
+  describe "enabled", ->
+    it "should dump objects by default", (done) ->
+      tstObj =
+        one:
+          two:
+            thee: "levels deep"
+
+      captured          = ""
+      depurar           = Depurar "Foo:Bar"
+      depurar.log       = capture
+      depurar.useColors = false
+      depurar tstObj
+      expect(captured).to.match /Foo:Bar { one: { two: { thee: 'levels deep' } } }$/
       done()
