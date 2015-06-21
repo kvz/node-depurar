@@ -18,7 +18,7 @@ test-coverage:
 	      --compilers coffee:coffee-script/register \
 	      --require coffee-coverage/register-istanbul \
 	      test
-	$(ISTANBUL) report text-summary lcov -x 'scrips/**' 
+	$(ISTANBUL) report text-summary lcov
 	cat coverage/lcov.info | $(COVERALLS)
 
 .PHONY: build
