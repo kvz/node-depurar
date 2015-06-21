@@ -11,9 +11,9 @@ lint:
 ISTANBUL   = node_modules/.bin/istanbul
 COVERALLS  = node_modules/coveralls/bin/coveralls.js
 
-test-coverage: build
+test-coverage:
 	# npm install --save-dev coffee-coverage istanbul coveralls
-	@DEBUG=*:*,-mocha:* && mocha --recursive \
+	export DEBUG=*:*,-mocha:* && mocha --recursive \
 	      --compilers coffee:coffee-script/register \
 	      --require coffee-coverage/register-istanbul \
 	      test
