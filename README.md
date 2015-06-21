@@ -60,7 +60,7 @@ dbg('ohai');
 
 [`debug`](https://www.npmjs.com/package/debug) by default picks the next color from a list, every time it gets instantiated, meaning you'll get a new color for every entity that's talking to you. However this also often means that with every run or change, every entity has a new color again. First world's problems - but the brain is great at recognizing patterns via color and so if every entity had it's own color, debug information would be easier to digest.
 
-That's the reasoning. And that's why Depurar reduces namespaces to a color index via crc. This does not warrant unique colors across the board, but it does make every class or feature, always speak in the same color.
+That's the reasoning. And that's why Depurar uses an algorithm to reduce the namespace to a single color. This makes every class or feature speak in the same color, always - at the tradeoff of an increased likelihood of a color being used twice.
 
 ![](https://dl.dropboxusercontent.com/s/45um101fayesfl3/2015-06-20%20at%2013.41.png?dl=0)
 
