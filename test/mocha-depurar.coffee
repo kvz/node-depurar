@@ -29,7 +29,7 @@ describe "Depurar", ->
       expect(captured).to.match /mFoo:Bar /
       done()
 
-    it "should figure out namespace via stackstrace if left unconfigured", (done) ->
+    it "should figure out full namespace via stackstrace if left unconfigured", (done) ->
       captured    = ""
       depurar     = Depurar()
       depurar.log = capture
@@ -37,6 +37,16 @@ describe "Depurar", ->
       depurar "ohai"
 
       expect(captured).to.match /node\-depurar:mocha\-depurar ohai$/
+      done()
+
+    it "should figure out only second part to namespace via stackstrace if left unconfigured", (done) ->
+      captured    = ""
+      depurar     = Depurar "Foo"
+      depurar.log = capture
+      depurar.useColors = false
+      depurar "ohai"
+
+      expect(captured).to.match /Foo:mocha\-depurar ohai$/
       done()
 
     it "should make color dependent on second part of namespace", (done) ->
