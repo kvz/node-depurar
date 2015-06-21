@@ -10,4 +10,4 @@ matrix:
   - node_js: 0.12
   - node_js: "iojs-v2.0.0"
 
-script: make test REPORTER=spec
+script: make test-coverage

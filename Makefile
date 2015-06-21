@@ -8,6 +8,17 @@ REPORTER   = spec
 lint:
 	@[ ! -f coffeelint.json ] && $(COFFEELINT) --makeconfig > coffeelint.json || true
 	@$(COFFEELINT) --file ./coffeelint.json src
+ISTANBUL   = node_modules/.bin/istanbul
+COVERALLS  = node_modules/coveralls/bin/coveralls.js
+
+test-coverage: build
+	# npm install --save-dev coffee-coverage istanbul coveralls
+	@DEBUG=*:*,-mocha:* && mocha --recursive \
+	      --compilers coffee:coffee-script/register \
+	      --require coffee-coverage/register-istanbul \
+	      test
+	./node_modules/.bin/istanbul report text-summary lcov
+	cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js
 
 .PHONY: build
 build:
