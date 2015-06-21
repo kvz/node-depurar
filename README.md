@@ -32,25 +32,26 @@ npm install --save depurar
 
 So I got a bit tired of opening `~/code/foo/lib/Bar.coffee` and typing:
 
-```coffeescript
-debug = require("debug")("foo:Bar")
-class Bar
-  constructor: ->
-    debug "ohai"
+```javascript
+var dbg = require('debur')('foo:Bar');
+dbg('ohai');
+// prints "  foo:Bar ohai",
 ```
 
 With Depurar, the second part will be based on the basename of the file where you require it:
 
-```coffeescript
-debug = require("depurar")("foo")
-# Sets the namespace to `foo:Bar` in the case of `~/code/foo/lib/Bar.coffee`
+```javascript
+var dbg = require('depurar')('foo');
+dbg('ohai');
+// prints "  foo:Bar ohai", in the case of `~/code/foo/lib/Bar.coffee`
 ```
 
 What's more, if you are really truly lazy, the first part of this namespace can even be [guessed](https://www.npmjs.com/package/app-root-path) based on the directory name of your library/app, and 
 
-```coffeescript
-debug = require("depurar")()
-# Sets the namespace to `foo:Bar` in the case of `~/code/foo/lib/Bar.coffee`
+```javascript
+var dbg = require('depurar')();
+dbg('ohai');
+// prints "  foo:Bar ohai", in the case of `~/code/foo/lib/Bar.coffee`
 ```
 
 ### Pick color based on namespace, not rotation
@@ -66,16 +67,13 @@ That's the reasoning. And that's why Depurar reduces namespaces to a color index
 
 ### Is Depurar more efficient than debug?
 
-While I'm too lazy to benchmark, considering there's extra pathfinding and computation involved, I'd say: No.
-If your app's bottleneck is in requiring files, Depurar is not for you. That said, if the bottleneck in your
-app becomes Depurar, I'd either be very impressed or underwhelmed by your app.
+While I'm too lazy to benchmark, considering there's extra pathfinding and computation involved, I'd say: No. That said, if the bottleneck in your app becomes Depurar, I'll either be very impressed or underwhelmed by your app. At any rate I'd be interested to learn about it: reach out.
 
 ## Todo
 
 - [ ] Support for enabling adding the linenumber to the debug prefix
 - [ ] Support for disabling colorpicking by namespace
 - [ ] Handle & test the case where `undefined` is debugged
-
 
 ## Sponsor Development
 
