@@ -3,7 +3,7 @@
 <!-- badges/ -->
 [![Build Status](https://travis-ci.org/kvz/node-depurar.svg?branch=master)](https://travis-ci.org/kvz/node-depurar)
 [![Build Status](https://img.shields.io/travis/kvz/node-depurar/master.svg)](http://travis-ci.org/kvz/node-depurar) 
-[![Coverage Status](https://coveralls.io/repos/kvz/node-depurar/badge.svg?branch=master)](https://coveralls.io/r/kvz/node-depurar?branch=master)
+[![Coverage Status](https://coveralls.io/repos/kvz/node-depurar/badge.svg)](https://coveralls.io/r/kvz/node-depurar)
 [![npm](https://img.shields.io/npm/v/depurar.svg)](https://www.npmjs.com/package/depurar) 
 [![Dependency Status](https://david-dm.org/kvz/depurar.png?theme=shields.io)](https://david-dm.org/kvz/depurar)
 [![Development Dependency Status](https://david-dm.org/kvz/depurar/dev-status.png?theme=shields.io)](https://david-dm.org/kvz/depurar#info=devDependencies)
