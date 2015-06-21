@@ -80,7 +80,6 @@ While I'm too lazy to benchmark, considering there's extra pathfinding and compu
 
 - [ ] Support for enabling adding the linenumber to the debug prefix
 - [ ] Support for disabling colorpicking by namespace
-- [ ] Handle & test the case where `undefined` is debugged
 
 ## Sponsor Development
 
