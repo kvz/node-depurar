@@ -16,7 +16,7 @@ test-coverage:
 	# npm install --save-dev coffee-coverage istanbul coveralls
 	export DEBUG=*:*,-mocha:* && mocha --recursive \
 	      --compilers coffee:coffee-script/register \
-	      --require coffee-coverage/register-istanbul \
+				--require ./coffee-coverage-loader.js \
 	      test
 	$(ISTANBUL) report text-summary lcov
 	cat coverage/lcov.info | $(COVERALLS)
