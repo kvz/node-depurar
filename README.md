@@ -24,6 +24,12 @@ of features for the truly lazy.
 npm install --save depurar
 ```
 
+## Usage
+
+Here are some examples of using Depurar. Most of which is very similar to the [`debug`](https://www.npmjs.com/package/debug) module that's powering it under the hood.
+
+![](https://dl.dropboxusercontent.com/s/dcw6r7nzflz4p49/2015-06-21%20at%2012.44.png?dl=0)
+
 ## Added features
 
 ### Automatically establish namespace 
@@ -63,7 +69,6 @@ dbg('ohai');
 That's the reasoning. And that's why Depurar uses an algorithm to reduce the namespace to a single color. This makes every class or feature speak in the same color, always - at the tradeoff of an increased likelihood of a color being used twice.
 
 ![](https://dl.dropboxusercontent.com/s/45um101fayesfl3/2015-06-20%20at%2013.41.png?dl=0)
-
 
 ## FAQ
 
