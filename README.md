@@ -28,9 +28,11 @@ npm install --save depurar
 
 ### Automatically establish namespace 
 
-`debug` has the convention of prefixing debug output with a namespace in the form of: `Library:feature`. This allows us to quickly enable/disable debug output for some libraries or features. In my interpretation of this convention this often leads to `ModuleName:ClassName`.
+[`debug`](https://www.npmjs.com/package/debug) uses the convention of prefixing output with a namespace, in the form of: `Library:feature`. 
 
-So I got a bit tired of opening `~/code/foo/lib/Bar.coffee` and typing:
+This allows us to quickly enable/disable debug output for some libraries or features via environment variables such as `DEBUG=Library:*`. In my interpretation of this convention, this often leads to `ModuleName:ClassName`.
+
+So I got a bit tired of opening `~/code/foo/lib/Bar.js` and typing:
 
 ```javascript
 var dbg = require('debur')('foo:Bar');
@@ -38,25 +40,25 @@ dbg('ohai');
 // prints "  foo:Bar ohai",
 ```
 
-With Depurar, the second part will be based on the basename of the file where you require it:
+So with Depurar, the second part will be based on the basename of the file where you require it:
 
 ```javascript
 var dbg = require('depurar')('foo');
 dbg('ohai');
-// prints "  foo:Bar ohai", in the case of `~/code/foo/lib/Bar.coffee`
+// prints "  foo:Bar ohai", in the case of `~/code/foo/lib/Bar.js`
 ```
 
-What's more, if you are really truly lazy, the first part of this namespace can even be [guessed](https://www.npmjs.com/package/app-root-path) based on the directory name of your library/app, and 
+What's more, if you are really truly lazy, the first part of this namespace can even be [guessed](https://www.npmjs.com/package/app-root-path) based on the root directory name of your library/app:
 
 ```javascript
 var dbg = require('depurar')();
 dbg('ohai');
-// prints "  foo:Bar ohai", in the case of `~/code/foo/lib/Bar.coffee`
+// prints "  foo:Bar ohai", in the case of `~/code/foo/lib/Bar.js`
 ```
 
 ### Pick color based on namespace, not rotation
 
-`debug` by default picks the next color from a list, every time it gets instantiated. That's nice so you get a new color for every entity that's talking to you. However in async land this also often means that with every run or change, every entity has a new color again. First world's problems but the brain is great at recognizing patterns via color and so if every entity had it's own color, debug information would be easier to digest.
+[`debug`](https://www.npmjs.com/package/debug) by default picks the next color from a list, every time it gets instantiated, meaning you'll get a new color for every entity that's talking to you. However this also often means that with every run or change, every entity has a new color again. First world's problems - but the brain is great at recognizing patterns via color and so if every entity had it's own color, debug information would be easier to digest.
 
 That's the reasoning. And that's why Depurar reduces namespaces to a color index via crc. This does not warrant unique colors across the board, but it does make every class or feature, always speak in the same color.
 
@@ -67,7 +69,7 @@ That's the reasoning. And that's why Depurar reduces namespaces to a color index
 
 ### Is Depurar more efficient than debug?
 
-While I'm too lazy to benchmark, considering there's extra pathfinding and computation involved, I'd say: No. That said, if the bottleneck in your app becomes Depurar, I'll either be very impressed or underwhelmed by your app. At any rate I'd be interested to learn about it: reach out.
+While I'm too lazy to benchmark, considering there's extra pathfinding and computation involved, I'd say: No. That said, if the bottleneck in your app becomes Depurar, I'll either be very impressed or underwhelmed by your library/app. At any rate I'd be interested to learn about it: reach out.
 
 ## Todo
 
