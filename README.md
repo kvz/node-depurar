@@ -7,7 +7,11 @@
 [![npm](https://img.shields.io/npm/v/depurar.svg)](https://www.npmjs.com/package/depurar) 
 [![Dependency Status](https://david-dm.org/kvz/node-depurar.png?theme=shields.io)](https://david-dm.org/kvz/node-depurar)
 [![Development Dependency Status](https://david-dm.org/kvz/node-depurar/dev-status.png?theme=shields.io)](https://david-dm.org/kvz/node-depurar#info=devDependencies)
+
+[![NPM](https://nodei.co/npm/depurar.png?downloads=true)](https://nodei.co/npm/depurar/)
 <!-- /badges -->
+
+
 
 
 > **depurar** (first-person singular present indicative depuro, past participle depurado)  
