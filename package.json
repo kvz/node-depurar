@@ -39,5 +39,5 @@
     "test": "make test"
   },
   "license": "MIT",
-  "main": "./index"
+  "main": "./lib/Depurar"
 }
