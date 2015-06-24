@@ -80,6 +80,8 @@ While I'm too lazy to benchmark, considering there's extra pathfinding and compu
 
 - [ ] Support for enabling adding the linenumber to the debug prefix
 - [ ] Support for disabling colorpicking by namespace
+- [ ] More colors, make duration the same color, freeing some variances up
+- [ ] Better algorithm for establishing color via namespace, meaning small changes make big differences already
 
 ## Sponsor Development
 
