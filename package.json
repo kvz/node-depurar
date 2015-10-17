@@ -22,7 +22,7 @@
     "coffee-script": "^1.10.0",
     "coffeelint": "^1.12.1",
     "coveralls": "^2.11.4",
-    "istanbul": "^0.3.20",
+    "istanbul": "^0.4.0",
     "mocha": "^2.3.2",
     "should": "^7.1.0",
     "underscore": "^1.8.3"
