@@ -11,7 +11,7 @@ class Depurar
       stackError = new Error
       filepath   = Depurar._getCallerPathFromTrace(stackError)
       basename   = path.basename filepath, path.extname(filepath)
-      parentDir  = path.basename appRoot
+      parentDir  = path.basename appRoot.path
 
       if namespace
         namespace = "#{namespace}:#{basename}"
