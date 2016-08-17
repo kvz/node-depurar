@@ -26,7 +26,7 @@ describe "Depurar", ->
       depurar     = Depurar "Foo:Bar"
       depurar.log = capture
       depurar "ohai"
-      expect(captured).to.match /mFoo:Bar /
+      expect(captured).to.match /Foo:Bar /
       done()
 
     it "should figure out full namespace via stackstrace if left unconfigured", (done) ->
