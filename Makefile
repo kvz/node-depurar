@@ -18,8 +18,8 @@ test-coverage:
 	      --compilers coffee:coffee-script/register \
 				--require ./coffee-coverage-loader.js \
 	      test
-	$(ISTANBUL) report text-summary lcov
-	cat coverage/lcov.info | $(COVERALLS)
+	$(ISTANBUL) report text-summary lcov || true
+	cat coverage/lcov.info | $(COVERALLS) || true
 
 .PHONY: build
 build:
